@@ -1,0 +1,6 @@
+datasource:
+  url: jdbc:postgresql://localhost:5432/clever_bank
+  username: postgres
+  password: 87654321
+  ddl:
+    auto: create-insert #create-only, create, create-insert
