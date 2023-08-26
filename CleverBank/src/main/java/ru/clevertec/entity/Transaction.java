@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Data
 @NoArgsConstructor
@@ -16,4 +17,7 @@ public class Transaction {
     private Account toAccount;
     private BigDecimal amount;
     private LocalDateTime date;
+
+    public Transaction(Long id, Optional<Account> fromAccount, Optional<Account> toAccount, BigDecimal amount, LocalDateTime date) {
+    }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Data
 @NoArgsConstructor
@@ -15,4 +16,7 @@ public class Account {
     private BigDecimal balance;
     private Bank bank;
     private User user;
+
+    public Account(Long id, String number, BigDecimal balance, Optional<Bank> bank, Optional<User> user) {
+    }
 }
