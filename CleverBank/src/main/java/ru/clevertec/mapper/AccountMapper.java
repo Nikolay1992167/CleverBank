@@ -6,7 +6,7 @@ import ru.clevertec.data.account.request.RequestAccountDto;
 import ru.clevertec.data.account.response.ResponseAccountDto;
 import ru.clevertec.entity.Account;
 
-@Mapper
+
 public interface AccountMapper {
     /**
      * Mapping request dto to account

@@ -6,7 +6,7 @@ import ru.clevertec.data.bank.request.RequestBankDto;
 import ru.clevertec.data.bank.response.ResponseBankDto;
 import ru.clevertec.entity.Bank;
 
-@Mapper
+
 public interface BankMapper {
     /**
      * Mapping request dto to bank

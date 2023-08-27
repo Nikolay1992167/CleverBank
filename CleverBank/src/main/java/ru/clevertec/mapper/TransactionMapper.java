@@ -6,7 +6,7 @@ import ru.clevertec.data.transaction.request.RequestTransactionDto;
 import ru.clevertec.data.transaction.response.ResponseTransactionDto;
 import ru.clevertec.entity.Transaction;
 
-@Mapper
+
 public interface TransactionMapper {
     /**
      * Mapping request dto to transaction

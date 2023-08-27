@@ -96,6 +96,21 @@ public class TransactionDAOImpl implements TransactionDAO {
     }
 
     @Override
+    public void updateTransaction(Transaction transaction) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_TRANSACTION)
+        ) {
+            statement.setLong(1, transaction.getFromAccount().getId());
+            statement.setLong(2, transaction.getToAccount().getId());
+            statement.setBigDecimal(3, transaction.getAmount());
+            statement.setTimestamp(4, java.sql.Timestamp.valueOf(transaction.getDate()));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new ResourceSqlException();
+        }
+    }
+
+    @Override
     public void deleteTransaction(Long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_TRANSACTION_BY_ID)

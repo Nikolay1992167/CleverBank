@@ -26,7 +26,6 @@ import static ru.clevertec.dao.util.AccountSQLUtil.*;
 public class AccountDAOImpl implements AccountDAO {
 
     private final DataSource dataSource;
-
     private final BankDAO bankDAO;
     private final UserDAO userDAO;
 

@@ -1,18 +1,19 @@
 package ru.clevertec.service.api;
 
-import ru.clevertec.entity.Account;
+import ru.clevertec.data.account.request.RequestAccountDto;
+import ru.clevertec.data.account.response.ResponseAccountDto;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface AccountService {
 
-    List<Account> geAllAccounts() throws SQLException, ClassNotFoundException;
-    Account getAccountById(Long id) throws SQLException, ClassNotFoundException;
+    List<ResponseAccountDto> geAllAccounts();
 
-    void addAccount(Account account) throws SQLException, ClassNotFoundException;
+    ResponseAccountDto getAccountById(Long id);
 
-    void updateAccount(Account account) throws SQLException, ClassNotFoundException;
+    void addAccount(RequestAccountDto accountDto);
 
-    void deleteAccount(Account account) throws SQLException, ClassNotFoundException;
+    void updateAccount(Long id, RequestAccountDto accountDto);
+
+    void deleteAccount(Long id);
 }

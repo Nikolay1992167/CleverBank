@@ -6,36 +6,35 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import ru.clevertec.data.user.request.RequestUserDto;
-import ru.clevertec.data.user.response.ResponseUserDto;
-import ru.clevertec.service.api.UserService;
+import ru.clevertec.data.account.request.RequestAccountDto;
+import ru.clevertec.data.account.response.ResponseAccountDto;
+import ru.clevertec.service.api.AccountService;
 import ru.clevertec.util.ControllerUtil;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@WebServlet("/users/*")
+@WebServlet("/accounts/*")
 @RequiredArgsConstructor
-public class UserController extends HttpServlet {
+public class AccountController extends HttpServlet {
 
-    private final UserService userService;
-
+    private final AccountService accountService;
     private final Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String pathInfo = req.getPathInfo();
         if (Objects.isNull(pathInfo)) {
-            List<ResponseUserDto> users;
-            users = userService.getAllUsers();
-            String json = gson.toJson(users);
+            List<ResponseAccountDto> accounts;
+            accounts = accountService.geAllAccounts();
+            String json = gson.toJson(accounts);
             sendJsonResponse(json, resp);
         } else if (ControllerUtil.isId(pathInfo)) {
             String id = pathInfo.substring(1);
-            ResponseUserDto user;
-            user = userService.getUserById(Long.parseLong(id));
-            String json = gson.toJson(user);
+            ResponseAccountDto account;
+            account = accountService.getAccountById(Long.parseLong(id));
+            String json = gson.toJson(account);
             sendJsonResponse(json, resp);
         } else {
             resp.sendError(404, String.format("The requested resource [%s] is not available", req.getRequestURI()));
@@ -44,9 +43,9 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        RequestUserDto userDto = gson.fromJson(req.getReader(), RequestUserDto.class);
-        userService.addUser(userDto);
-        String json = gson.toJson(userDto);
+        RequestAccountDto accountDto = gson.fromJson(req.getReader(), RequestAccountDto.class);
+        accountService.addAccount(accountDto);
+        String json = gson.toJson(accountDto);
         sendJsonResponse(json, resp);
     }
 
@@ -58,9 +57,9 @@ public class UserController extends HttpServlet {
             return;
         }
         String id = pathInfo.substring(1);
-        RequestUserDto user = gson.fromJson(req.getReader(), RequestUserDto.class);
-        userService.updateUser(Long.parseLong(id), user);
-        String json = gson.toJson(user);
+        RequestAccountDto account = gson.fromJson(req.getReader(), RequestAccountDto.class);
+        accountService.updateAccount(Long.parseLong(id), account);
+        String json = gson.toJson(account);
         sendJsonResponse(json, resp);
     }
 
@@ -72,7 +71,7 @@ public class UserController extends HttpServlet {
             return;
         }
         String id = pathInfo.substring(1);
-        userService.deleteUser(Long.parseLong(id));
+        accountService.deleteAccount(Long.parseLong(id));
         resp.setStatus(204);
     }
 

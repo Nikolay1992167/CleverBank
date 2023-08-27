@@ -6,10 +6,13 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public interface Service {
-    void deposit(Long accountId, BigDecimal amount) throws SQLException, ClassNotFoundException;
-    void withdraw(Long accountId, BigDecimal amount) throws SQLException, ClassNotFoundException;
-    void transfer(Long fromAccountId, Long toAccountId, BigDecimal amount) throws SQLException, ClassNotFoundException;
-    void accrueInterest();
-    void printReceipt(Transaction transaction);
+    void deposit(Long accountId, BigDecimal amount);
 
+    void withdraw(Long accountId, BigDecimal amount);
+
+    void transfer(Long fromAccountId, Long toAccountId, BigDecimal amount) throws SQLException;
+
+    void accrueInterest();
+
+    void printReceipt(Transaction transaction);
 }

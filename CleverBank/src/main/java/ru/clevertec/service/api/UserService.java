@@ -1,16 +1,19 @@
 package ru.clevertec.service.api;
 
-import ru.clevertec.entity.User;
+import ru.clevertec.data.user.request.RequestUserDto;
+import ru.clevertec.data.user.response.ResponseUserDto;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface UserService {
 
-    List<User> getAllUsers() throws SQLException, ClassNotFoundException;
-    User getUserById(Long id) throws SQLException, ClassNotFoundException;
-    void addUser(User user) throws SQLException, ClassNotFoundException;
-    void updateUser(User user) throws SQLException, ClassNotFoundException;
-    void deleteUser(User user) throws SQLException, ClassNotFoundException;
+    List<ResponseUserDto> getAllUsers();
 
+    ResponseUserDto getUserById(Long id);
+
+    void addUser(RequestUserDto userDto);
+
+    void updateUser(Long id, RequestUserDto userDto);
+
+    void deleteUser(Long id);
 }

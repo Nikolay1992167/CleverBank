@@ -6,7 +6,7 @@ import ru.clevertec.data.user.request.RequestUserDto;
 import ru.clevertec.data.user.response.ResponseUserDto;
 import ru.clevertec.entity.User;
 
-@Mapper
+
 public interface UserMapper {
     /**
      * Mapping request dto to user

@@ -1,14 +1,18 @@
 package ru.clevertec.service.api;
 
-import ru.clevertec.entity.Bank;
+import ru.clevertec.data.bank.request.RequestBankDto;
+import ru.clevertec.data.bank.response.ResponseBankDto;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface BankService {
-    List<Bank> getAllBanks() throws SQLException, ClassNotFoundException;
-    Bank getBankById(Long id) throws SQLException, ClassNotFoundException;
-    void addBank(Bank bank) throws SQLException, ClassNotFoundException;
-    void updateBank(Bank bank) throws SQLException, ClassNotFoundException;
-    void deleteBank(Bank bank) throws SQLException, ClassNotFoundException;
+    List<ResponseBankDto> getAllBanks();
+
+    ResponseBankDto getBankById(Long id);
+
+    void addBank(RequestBankDto bankDto);
+
+    void updateBank(Long id, RequestBankDto bankDto);
+
+    void deleteBank(Long id);
 }
